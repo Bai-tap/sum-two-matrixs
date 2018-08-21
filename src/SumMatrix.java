@@ -1,20 +1,28 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class SumMatrix {
     public static void main(String[] args) {
-        int[][] firstArray = getArray(5, 5);
+        int size = getSize();
+        int[][] firstArray = getArray(size, size);
         System.out.println("first matrix");
         displaySumArray(firstArray);
 
-        int[][] secondArray = getArray(5, 5);
+        int[][] secondArray = getArray(size, size);
         System.out.println("second matrix");
         displaySumArray(secondArray);
 
-        int[][] sumArray = getSumArray(firstArray, secondArray);
+        int[][] sumArray = getSumArray(firstArray, secondArray, size);
         System.out.println("result: ");
         displaySumArray(sumArray);
 
 
+    }
+
+    private static int getSize() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter size: ");
+        return sc.nextInt();
     }
 
     private static void displaySumArray(int[][] array) {
@@ -26,8 +34,8 @@ public class SumMatrix {
         }
     }
 
-    private static int[][] getSumArray(int[][] firstArray, int[][] secondArray) {
-        int[][] array = new int[5][5];
+    private static int[][] getSumArray(int[][] firstArray, int[][] secondArray, int size) {
+        int[][] array = new int[size][size];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 array[i][j] = firstArray[i][j] + secondArray[i][j];
